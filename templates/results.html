@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Search Results</title>
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,600,600i" rel="stylesheet">
+	<style>
+		body {
+			font-family: 'Josefin Sans', sans-serif;
+			background-color: #f2f2f2;
+			background-image: url('https://i.imgur.com/sb2hWb4.png');
+			background-repeat: no-repeat;
+			background-size: cover;
+			margin: 0;
+			padding: 0;
+		}
+
+		h1 {
+			color: #fff;
+			font-weight: 700;
+			font-size: 3rem;
+			margin-top: 100px;
+			text-align: center;
+			text-shadow: 2px 2px #d8d5d7;
+			background-color: rgba(0, 0, 0, 0.3);
+			padding: 10px;
+		}
+
+		table {
+			background-color: rgba(255, 255, 255, 0.8);
+			border-collapse: collapse;
+			box-shadow: 0px 0px 20px #6f7677;
+			margin: 50px auto;
+			max-width: 800px;
+			padding: 20px;
+			width: 100%;
+		}
+
+		th {
+			background-color: #274c48;
+			color: #fff;
+			font-size: 1.5rem;
+			font-weight: 700;
+			padding: 10px;
+			text-align: left;
+			text-shadow: 1px 1px #d8d5d7;
+		}
+
+		td {
+			font-size: 1.2rem;
+			padding: 10px;
+		}
+
+		tr:nth-child(even) {
+			background-color: #d8d5d7;
+		}
+
+		.footer {
+			background-color: rgba(0, 0, 0, 0.3);
+			bottom: 0;
+			color: #fff;
+			font-size: 1rem;
+			padding: 10px;
+			text-align: center;
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+	<h1>Search Results</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Address</th>
+				<th>Phone</th>
+				<th>Website</th>
+				<th>Email</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for business in businesses %}
+      			<tr>
+        			<td>{{ business.name }}</td>
+        			<td>{{ business.address }}</td>
+        			<td>{{ business.phone }}</td>
+        			<td><a href="{{ business.website }}" target="_blank">{{ business.website }}</a></td>
+        			<td>{{ business.email }}</td>
+      			</tr>
+      			{% endfor %}
+		</tbody>
+	</table>
+	<div class="footer">
+		<p style="opacity: 0.8;">Untapped developed by Cary Palmer, 2023</p>
+	</div>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Untapped</title>
+		<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,600,600i" rel="stylesheet">
+		<style>
+		body {
+			font-family: 'Josefin Sans', sans-serif;
+			background-color: #f2f2f2;
+			background-image: url('https://i.imgur.com/sb2hWb4.png');
+			background-repeat: no-repeat;
+			background-size: cover;
+			margin: 0;
+			padding: 0;
+		}
+
+		h1 {
+			color: #151417;
+			font-weight: 700;
+			font-size: 3rem;
+			margin-top: 100px;
+			text-align: center;
+			text-shadow: 2px 2px #d8d5d7;
+		}
+
+		form {
+			background-color: rgba(255, 255, 255, 0.8);
+			border-radius: 10px;
+			box-shadow: 0px 0px 20px #6f7677;
+			display: flex;
+			flex-direction: column;
+			margin: 50px auto;
+			max-width: 500px;
+			padding: 50px;
+			text-align: center;
+		}
+
+		label {
+			color: #274c48;
+			font-size: 1.5rem;
+			font-weight: 700;
+			margin-bottom: 10px;
+			text-shadow: 1px 1px #d8d5d7;
+		}
+
+		input[type="text"],
+		input[type="number"] {
+			background-color: #d8d5d7;
+			border: none;
+			border-radius: 5px;
+			box-sizing: border-box;
+			color: #151417;
+			font-size: 1.2rem;
+			margin-bottom: 20px;
+			padding: 10px;
+			width: 100%;
+		}
+
+		button[type="submit"],
+		button[type="button"] {
+			background-color: #274c48;
+			border: none;
+			border-radius: 5px;
+			box-shadow: 2px 2px #6f7677;
+			color: #fff;
+			cursor: pointer;
+			font-size: 1.2rem;
+			margin-top: 20px;
+			padding: 10px;
+			transition: all 0.3s ease;
+			width: 100%;
+			margin-top: 10px;
+		}
+
+		button[type="submit"]:hover,
+		button[type="button"]:hover {
+			background-color: #151417;
+			box-shadow: none;
+			transform: translateY(-2px);
+		}
+
+		#radius {
+			margin-top: 10px;
+		}
+
+		.footer {
+			background-color: rgba(0, 0, 0, 0.3);
+			bottom: 0;
+			color: #fff;
+			font-size: 1rem;
+			padding: 10px;
+			position: absolute;
+			text-align: center;
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+	<h1>Untapped - Find potential in businesses near you!</h1>
+	<form action="/search" method="post">
+    	<input type="hidden" id="latitude" name="latitude">
+    	<input type="hidden" id="longitude" name="longitude">
+			<button type="button" onclick="getLocation()" style="margin-bottom: 25px;">Get My Location</button>
+		<label for="business-type">Business Type:</label>
+		<input type="text" id="business-type" name="business_type" required><br><br>
+		<label for="radius">Search Radius (in miles):</label>
+		<input type="number" id="radius" name="radius" min="1" step="1" required>
+		<input type="submit" value="Search">
+	</form>
+	<div class="footer">
+		<p style="opacity: 0.8;">Untapped developed by Cary Palmer, 2023</p>
+	</div>
+	<script>
+	function getLocation() {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(showPosition);
+		} else {
+			alert("Geolocation is not supported by this browser.");
+		}
+	}
+function showPosition(position) {
+	document.getElementById("latitude").value = position.coords.latitude;
+	document.getElementById("longitude").value = position.coords.longitude;
+}
+</script>
+</body>
+</html>
